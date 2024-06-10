@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+</head>
+<body>
+  <h1>Temperature Converter</h1>
+  
+  <form id="temperature-form">
+    <label for="temperature">Temperature:</label>
+    <input type="number" id="temperature" name="temperature" required>
+    
+    <label for="unit">Unit:</label>
+    <select id="unit" name="unit" required>
+      <option value="celsius">Celsius (°C)</option>
+      <option value="fahrenheit">Fahrenheit (°F)</option>
+      <option value="kelvin">Kelvin (K)</option>
+    </select>
+    
+    <button type="submit">Convert</button>
+  </form>
+  
+  <div id="result" style="margin-top: 20px;">
+    <h2>Converted Temperatures:</h2>
+    <p>Celsius: <span id="celsius"></span>°C</p>
+    <p>Fahrenheit: <span id="fahrenheit"></span>°F</p>
+    <p>Kelvin: <span id="kelvin"></span>K</p>
+  </div>
+  
+  <script>
+    const form = document.getElementById('temperature-form');
+    const resultDiv = document.getElementById('result');
+    const celsiusSpan = document.getElementById('celsius');
+    const fahrenheitSpan = document.getElementById('fahrenheit');
+    const kelvinSpan = document.getElementById('kelvin');
+    
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const temperature = parseFloat(document.getElementById('temperature').value);
+      const unit = document.getElementById('unit').value;
+      
+      let celsius, fahrenheit, kelvin;
+      
+      switch (unit) {
+        case 'celsius':
+          celsius = temperature;
+          fahrenheit = (temperature * 9/5) + 32;
+          kelvin = temperature + 273.15;
+          break;
+        case 'fahrenheit':
+          celsius = (temperature - 32) * 5/9;
+          fahrenheit = temperature;
+          kelvin = (temperature - 32) * 5/9 + 273.15;
+          break;
+        case 'kelvin':
+          celsius = temperature - 273.15;
+          fahrenheit = (temperature - 273.15) * 9/5 + 32;
+          kelvin = temperature;
+          break;
+      }
+      
+      celsiusSpan.textContent = celsius.toFixed(2);
+      fahrenheitSpan.textContent = fahrenheit.toFixed(2);
+      kelvinSpan.textContent = kelvin.toFixed(2);
+      
+      resultDiv.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
