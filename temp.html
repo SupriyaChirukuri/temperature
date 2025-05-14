@@ -2,31 +2,112 @@
 <html>
 <head>
   <title>Temperature Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="number"],
+    select,
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      display: none;
+      margin-top: 20px;
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+
+    p {
+      margin: 5px 0;
+      color: #333;
+    }
+
+    span {
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-  <h1>Temperature Converter</h1>
-  
-  <form id="temperature-form">
-    <label for="temperature">Temperature:</label>
-    <input type="number" id="temperature" name="temperature" required>
+
+  <div class="container">
+    <h1>Temperature Converter</h1>
     
-    <label for="unit">Unit:</label>
-    <select id="unit" name="unit" required>
-      <option value="celsius">Celsius (°C)</option>
-      <option value="fahrenheit">Fahrenheit (°F)</option>
-      <option value="kelvin">Kelvin (K)</option>
-    </select>
+    <form id="temperature-form">
+      <label for="temperature">Temperature:</label>
+      <input type="number" id="temperature" name="temperature" required>
+      
+      <label for="unit">Unit:</label>
+      <select id="unit" name="unit" required>
+        <option value="celsius">Celsius (°C)</option>
+        <option value="fahrenheit">Fahrenheit (°F)</option>
+        <option value="kelvin">Kelvin (K)</option>
+      </select>
+      
+      <button type="submit">Convert</button>
+    </form>
     
-    <button type="submit">Convert</button>
-  </form>
-  
-  <div id="result" style="margin-top: 20px;">
-    <h2>Converted Temperatures:</h2>
-    <p>Celsius: <span id="celsius"></span>°C</p>
-    <p>Fahrenheit: <span id="fahrenheit"></span>°F</p>
-    <p>Kelvin: <span id="kelvin"></span>K</p>
+    <div id="result">
+      <h2>Converted Temperatures:</h2>
+      <p>Celsius: <span id="celsius"></span>°C</p>
+      <p>Fahrenheit: <span id="fahrenheit"></span>°F</p>
+      <p>Kelvin: <span id="kelvin"></span>K</p>
+    </div>
   </div>
-  
+
   <script>
     const form = document.getElementById('temperature-form');
     const resultDiv = document.getElementById('result');
@@ -67,5 +148,6 @@
       resultDiv.style.display = 'block';
     });
   </script>
+
 </body>
 </html>
